@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdeliver.net/npm/quagga"></script>
+  </head>
+  <body>
+    <video id="barcode-scanner" autoplay="true" playsinline="true"></video>
+  </body>
+</html>

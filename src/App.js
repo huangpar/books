@@ -1,23 +1,40 @@
 import logo from './logo.svg';
+import Quagga from 'quagga';
+import { useEffect, useRef} from 'react';
 import './App.css';
 
 function App() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      Quagga.init({
+        inputStream: {
+          name: "Live",
+          type: "LiveStream",
+          target: videoRef.current
+        },
+
+        decoder: {
+          readers: ["code_128_reader"]
+        }
+      }, function(err) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        Quagga.start()
+      });
+
+      return () => {
+        Quagga.stop();
+      };
+    }
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <video ref={videoRef} autoPlay playsInline></video>
     </div>
   );
 }
