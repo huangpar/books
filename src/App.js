@@ -1,5 +1,5 @@
 import { jsQR } from 'jsqr';
-import { useEffect, useRef, useState, useCallback} from 'react';
+import { useEffect, useRef} from 'react';
 import './App.css';
 
 function QRScanner() {
@@ -20,6 +20,7 @@ function QRScanner() {
         video.setAttribute("playsinline", true); // Required for iOS
         video.addEventListener('loadmetadata', () => {
           video.play();
+          requestAnimationFrame(tick);
         });
       }
       })
