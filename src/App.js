@@ -2,7 +2,7 @@ import { jsQR } from 'jsqr';
 import { useEffect, useRef} from 'react';
 import './App.css';
 
-function QRScanner() {
+function App() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -51,7 +51,7 @@ function QRScanner() {
   );
 }
 
-export default QRScanner;
+export default App;
 
 // function App() {
 //   const scannerRef = useRef(null);
